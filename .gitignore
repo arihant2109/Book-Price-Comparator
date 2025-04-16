@@ -1,2 +1,5 @@
 
 /docs
+/backend/node_modules
+/backend/.env
+/backend/config
