@@ -5,3 +5,5 @@ import fetchBooks from '../controllers/fetchBooks.js';
 const router = express.Router();
 
 router.use('/fetchAllBooks',fetchBooks);
+
+export default router;

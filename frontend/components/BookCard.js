@@ -1,18 +1,22 @@
-
 import React from "react";
 import Image from "next/image";
+import styles from "../styles/BookCard.module.css";
+
 const BookCard = ({ image, name, author }) => {
   return (
-    <div className="max-w-xs rounded-2xl overflow-hidden shadow-lg bg-white p-4 hover:shadow-xl transition-shadow">
-      <Image
-        className="w-full h-60 object-contain mb-4"
-        src={image}
-        alt={name}
-
-      />
-      <div>
-        <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-        <p className="text-sm text-gray-600">by {author}</p>
+    <div className={styles.cardWrapper}>
+      <div className={styles.card}>
+        <Image
+          
+          alt={name}
+          width={100}
+          height={100}
+          className={styles.bookImage}
+        />
+        <div>
+          <h3 className={styles.title}>{name}</h3>
+          <p className={styles.author}>by {author}</p>
+        </div>
       </div>
     </div>
   );

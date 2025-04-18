@@ -1,35 +1,62 @@
-// components/Navbar.tsx
+"use client"
 import Link from 'next/link';
+import { useState } from 'react';
+import styles from '../styles/navbar.module.css';
 
 export default function Navbar() {
-  return (
-    <nav className="bg-gradient-to-r from-blue-900 to-purple-900 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-bold tracking-wide">
-            📘 BookCompare
-          </Link>
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex space-x-6 text-sm font-medium">
-            <Link href="/homepage" className="hover:text-yellow-300 transition ">Home</Link>
-            <Link href="/compare" className="hover:text-yellow-300 transition">Compare</Link>
-            <Link href="/reviews" className="hover:text-yellow-300 transition">Reviews</Link>
-            <Link href="/about" className="hover:text-yellow-300 transition">About</Link>
-          </div>
+    return (
+        <nav className={styles.navbar}>
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    <Link href="/" className={styles.logo}>
+                        📚 BookCompare
+                    </Link>
 
-          {/* Auth Buttons */}
-          <div className="space-x-4">
-            <Link href="/login" className="px-4 py-2 border border-white rounded hover:bg-white hover:text-blue-900 transition">
-              Sign In
-            </Link>
-            <Link href="/signup" className="px-4 py-2 bg-yellow-400 text-blue-900 rounded hover:bg-yellow-300 transition">
-              Register
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+                    <div className={styles.navLinks}>
+                        <Link href="/homepage" className={styles.navLink}>Home</Link>
+                        <Link href="/compare" className={styles.navLink}>Compare</Link>
+                        <Link href="/reviews" className={styles.navLink}>Reviews</Link>
+                        <Link href="/about" className={styles.navLink}>About</Link>
+                    </div>
+
+                    <div className={styles.authButtons}>
+                        <Link href="/login" className={`${styles.authButton} ${styles.loginButton}`}>
+                            Sign In
+                        </Link>
+                        <Link href="/signup" className={`${styles.authButton} ${styles.registerButton}`}>
+                            Register
+                        </Link>
+                    </div>
+
+                    <button 
+                        className={styles.mobileMenuButton}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.active : ''}`}>
+                    <Link href="/homepage" className={styles.navLink}>Home</Link>
+                    <Link href="/compare" className={styles.navLink}>Compare</Link>
+                    <Link href="/reviews" className={styles.navLink}>Reviews</Link>
+                    <Link href="/about" className={styles.navLink}>About</Link>
+                    <div className={styles.authButtons}>
+                        <Link href="/login" className={`${styles.authButton} ${styles.loginButton}`}>
+                            Sign In
+                        </Link>
+                        <Link href="/signup" className={`${styles.authButton} ${styles.registerButton}`}>
+                            Register
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    );
 }

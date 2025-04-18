@@ -1,11 +1,12 @@
-import pool from "../db";
+import pool from "../db/index.js";
 
 
 export const fetchAllBooks = async(req,res)=>{
     try{
         const books = await pool.query("SELECT * FROM books");
+        // console.log(books);
 
-    if(books.row.length>0){
+    if(books.rows.length>0){
         return res.status(200).json({success:true,data:books.rows,message:"Books Fetched"});
     }
     else {

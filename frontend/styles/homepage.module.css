@@ -1,21 +1,128 @@
-.container{
-    height: calc(100vh - 64px);
+.container {
+    min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    padding: 2rem 0;
 }
 
-.searchSection{
+.heroSection {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/books-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroSubtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.compareButton {
+    background: #007bff;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.compareButton:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.searchSection {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem 0;
+    position: relative;
 }
-.searchSection input{
+
+.searchSection input {
     height: 60px;
     width: 80%;
-    border: 2px solid black;
+    max-width: 800px;
+    border: none;
     border-radius: 30px;
+    padding: 0 2rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.searchSection input:focus {
+    outline: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.searchSection input::placeholder {
+    color: #6c757d;
+}
+
+.booksSection {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.booksGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        height: 300px;
+    }
+    
+    .heroTitle {
+        font-size: 2rem;
+    }
+    
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+    
+    .searchSection input {
+        width: 90%;
+    }
+
+    .compareButton {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
 }
