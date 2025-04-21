@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import styles from './../../styles/homepage.module.css'
 import BookCard from '@/components/BookCard.js'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 const Page = () => {
@@ -52,11 +53,13 @@ const Page = () => {
                 <div className={styles.booksGrid}>
                     {filteredBooks.map((book) => (
                         <div key={book.unique_id}>
+                            <Link key = {book.unique_id} href={`./book/${book.unique_id}`}>
                             <BookCard 
                                 image={book.image_url} 
                                 name={book.book_name} 
                                 author={book.book_author} 
-                            />
+                            />  
+                            </Link>
                         </div>
                     ))}
                 </div>
